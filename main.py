@@ -4,17 +4,16 @@ import struct
 
 
 def to_float(arr):
-    res = [[arr[d + 2], arr[d + 3], arr[d], arr[d + 1]] for d in range(0, len(arr), 4)]
-    return float_arr(res)
+    group_array = [list(arr[d:d+4]) for d in range(0, len(arr), 4)]
+    return float_arr(group_array)
 
 
 def float_arr(arr):
     dd = []
     for t in arr:
-        k, = struct.unpack("!f", t[0] + t[1] + t[2] + t[3])
+        k, = struct.unpack("!f", t[2] + t[3] + t[0] + t[1])
         dd.append(k)
     return dd
-    pass
 
 
 def main():
@@ -26,13 +25,13 @@ def main():
     starting_address = 0
     quantity_of_x = 100
 
-    getDI = master.execute(slave,
-                           function_code,
-                           starting_address,
-                           quantity_of_x,
-                           data_format=f"{quantity_of_x * 2}c"
-                           )
-    f = to_float(getDI)
+    get_di = master.execute(slave,
+                            function_code,
+                            starting_address,
+                            quantity_of_x,
+                            data_format=f"{quantity_of_x * 2}c"
+                            )
+    f = to_float(get_di)
     print(f)
 
     f_100 = [17.269498825073242, 0.0, 18.0, 0.5, 50.0, 1.1020946175206465e-39, 0.0, 0.0, 0.0, 0.0, -50.0,
