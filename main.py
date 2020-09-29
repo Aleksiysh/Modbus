@@ -11,8 +11,7 @@ def to_float(arr):
 def float_arr(arr):
     dd = []
     for t in arr:
-        a, b, c, d = tuple(t)
-        k, = struct.unpack("!f", a + b + c + d)
+        k, = struct.unpack("!f", t[0] + t[1] + t[2] + t[3])
         dd.append(k)
     return dd
     pass
