@@ -12,12 +12,12 @@ def to_float(arr):
         ss.append(arr[i + 0])
         ss.append(arr[i + 1])
 
-    ss = [([arr[d + 2], arr[d + 3], arr[d], arr[d + 1]]) for d in range(0, len(arr), 4)]
+    # ss = ([arr[d + 2], arr[d + 3], arr[d], arr[d + 1]]) for d in range(0, len(arr), 4)]
 
     res = [(ss[d:d + 4]) for d in range(0, len(ss), 4)]
 
     k = float_arr(res)
-    return res
+    return k
 
     pass
 
@@ -26,9 +26,9 @@ def float_arr(arr):
     dd = []
     for t in arr:
         a, b, c, d = tuple(t)
-        k, = struct.unpack("!f", a + b + c + d)
+        k = struct.unpack("!f", a + b + c + d)
         dd.append(k)
-
+    return dd
     pass
 
 
@@ -48,14 +48,8 @@ def main():
                            quantity_of_x,
                            data_format=f"{quantity_of_x * 2}c"
                            )
-
-    pp = struct.pack("!f", -50.0)
-    aa = to_float(getDI)
-
-    a, b, c, d = to_float(getDI)[0]
-    h = struct.unpack("!f", a + b + c + d)
-
-    print(struct.unpack("!f", a + b + c + d))
+    f = to_float(getDI)
+    print(*f)
 
     pass
 
