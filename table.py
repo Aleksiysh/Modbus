@@ -22,8 +22,8 @@ class Table(tk.Frame):
         scrolltable.pack(side=tk.RIGHT, fill=tk.Y)
         table.pack(expand=tk.YES, fill=tk.BOTH)
 
-
-root = tk.Tk()
-table = Table(root, headings=('aaa', 'bbb', 'ccc'), rows=((123, 456, 789), ('abc', 'def', 'ghk')))
-table.pack(expand=tk.YES, fill=tk.BOTH)
-root.mainloop()
+def aa():
+    root = tk.Tk()
+    table = Table(root, headings=('aaa', 'bbb', 'ccc'), rows=((123, 456, 789), ('abc', 'def', 'ghk')))
+    table.pack(expand=tk.YES, fill=tk.BOTH)
+    root.mainloop()
